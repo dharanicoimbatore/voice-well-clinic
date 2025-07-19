@@ -2,11 +2,13 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Mail, Calendar, Award, GraduationCap } from "lucide-react";
+import { Link } from "react-router-dom";
 import founderImage from "@/assets/founder-portrait.jpg";
 
 const DoctorsSection = () => {
   const doctors = [
     {
+      id: "1",
       name: "Dr. Sarah Johnson",
       title: "Founder & Lead Laryngologist",
       image: founderImage,
@@ -16,6 +18,7 @@ const DoctorsSection = () => {
       description: "Dr. Johnson is a renowned laryngologist with extensive experience in complex voice disorders and surgical interventions."
     },
     {
+      id: "2",
       name: "Dr. Michael Chen",
       title: "Senior Laryngologist",
       image: founderImage, // Using same image for demo
@@ -25,6 +28,7 @@ const DoctorsSection = () => {
       description: "Specializing in pediatric laryngeal conditions and innovative speech therapy techniques for voice restoration."
     },
     {
+      id: "3",
       name: "Dr. Emily Rodriguez",
       title: "Voice Rehabilitation Specialist",
       image: founderImage, // Using same image for demo
@@ -51,7 +55,8 @@ const DoctorsSection = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {doctors.map((doctor, index) => (
-            <Card key={index} className="group hover:shadow-medical transition-all duration-300">
+            <Link key={index} to={`/doctor/${doctor.id}`}>
+              <Card className="group hover:shadow-medical transition-all duration-300 cursor-pointer">
               <CardContent className="p-6">
                 <div className="text-center mb-6">
                   <img 
@@ -100,6 +105,7 @@ const DoctorsSection = () => {
                 </div>
               </CardContent>
             </Card>
+            </Link>
           ))}
         </div>
 
