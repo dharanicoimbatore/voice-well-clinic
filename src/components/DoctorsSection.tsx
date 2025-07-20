@@ -56,55 +56,65 @@ const DoctorsSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {doctors.map((doctor, index) => (
             <Link key={index} to={`/doctor/${doctor.id}`}>
-              <Card className="group hover:shadow-medical transition-all duration-300 cursor-pointer">
-              <CardContent className="p-6">
-                <div className="text-center mb-6">
-                  <img 
-                    src={doctor.image} 
-                    alt={doctor.name}
-                    className="w-32 h-32 rounded-full object-cover mx-auto mb-4 group-hover:scale-105 transition-transform"
-                  />
-                  <h3 className="text-xl font-bold text-foreground mb-1">{doctor.name}</h3>
-                  <p className="text-primary font-semibold mb-2">{doctor.title}</p>
-                  
-                  <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground mb-4">
-                    <GraduationCap className="h-4 w-4" />
-                    <span>{doctor.education}</span>
+              <Card className="group hover:shadow-lg hover:border-primary/20 transition-all duration-300 cursor-pointer overflow-hidden">
+                <div className="relative">
+                  <div className="h-48 bg-gradient-to-br from-primary/5 to-primary/10 flex items-center justify-center">
+                    <img 
+                      src={doctor.image} 
+                      alt={doctor.name}
+                      className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg group-hover:scale-105 transition-transform"
+                    />
                   </div>
-                  
-                  <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground mb-4">
-                    <Award className="h-4 w-4" />
-                    <span>{doctor.experience} Experience</span>
+                  <div className="absolute top-4 right-4">
+                    <Badge variant="secondary" className="bg-white/90 text-primary">
+                      {doctor.experience}
+                    </Badge>
                   </div>
                 </div>
-
-                <p className="text-sm text-muted-foreground text-center mb-6 leading-relaxed">
-                  {doctor.description}
-                </p>
-
-                <div className="mb-6">
-                  <h4 className="font-semibold text-foreground mb-3 text-center">Specialties</h4>
-                  <div className="flex flex-wrap gap-2 justify-center">
-                    {doctor.specialties.map((specialty, idx) => (
-                      <Badge key={idx} variant="outline" className="text-xs">
-                        {specialty}
-                      </Badge>
-                    ))}
+                
+                <CardContent className="p-6">
+                  <div className="text-center mb-4">
+                    <h3 className="text-xl font-bold text-foreground mb-1">{doctor.name}</h3>
+                    <p className="text-primary font-semibold mb-3">{doctor.title}</p>
+                    
+                    <div className="flex items-center justify-center space-x-2 text-sm text-muted-foreground mb-4">
+                      <GraduationCap className="h-4 w-4 text-primary" />
+                      <span>{doctor.education}</span>
+                    </div>
                   </div>
-                </div>
 
-                <div className="flex space-x-2">
-                  <Button variant="outline" size="sm" className="flex-1">
-                    <Mail className="mr-2 h-4 w-4" />
-                    Contact
-                  </Button>
-                  <Button size="sm" className="flex-1">
-                    <Calendar className="mr-2 h-4 w-4" />
-                    Book Appointment
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+                  <p className="text-sm text-muted-foreground text-center mb-4 leading-relaxed line-clamp-3">
+                    {doctor.description}
+                  </p>
+
+                  <div className="mb-6">
+                    <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">Specialties</h4>
+                    <div className="flex flex-wrap gap-1">
+                      {doctor.specialties.slice(0, 3).map((specialty, idx) => (
+                        <Badge key={idx} variant="outline" className="text-xs bg-primary/5 border-primary/20 text-primary">
+                          {specialty}
+                        </Badge>
+                      ))}
+                      {doctor.specialties.length > 3 && (
+                        <Badge variant="outline" className="text-xs bg-muted">
+                          +{doctor.specialties.length - 3} more
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="flex space-x-2">
+                    <Button variant="outline" size="sm" className="flex-1 group-hover:border-primary/50">
+                      <Mail className="mr-2 h-4 w-4" />
+                      Contact
+                    </Button>
+                    <Button size="sm" className="flex-1">
+                      <Calendar className="mr-2 h-4 w-4" />
+                      Book
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
             </Link>
           ))}
         </div>
