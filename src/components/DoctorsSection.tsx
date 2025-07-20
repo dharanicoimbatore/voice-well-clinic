@@ -62,7 +62,7 @@ const DoctorsSection = () => {
                     <img 
                       src={doctor.image} 
                       alt={doctor.name}
-                      className="w-28 h-28 rounded-full object-cover border-4 border-white shadow-lg group-hover:scale-105 transition-transform"
+                      className="w-36 h-36 rounded-full object-cover border-4 border-white shadow-lg group-hover:scale-105 transition-transform"
                     />
                   </div>
                   <div className="absolute top-4 right-4">
