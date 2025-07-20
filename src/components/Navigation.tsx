@@ -26,6 +26,9 @@ const Navigation = () => {
               <a href="#news" className="text-foreground hover:text-primary transition-colors">
                 News & Events
               </a>
+              <a href="/blog" className="text-foreground hover:text-primary transition-colors">
+                Blog
+              </a>
             </div>
           </div>
           
