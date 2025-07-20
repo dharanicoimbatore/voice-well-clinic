@@ -83,9 +83,15 @@ const DoctorsSection = () => {
                     </div>
                   </div>
 
-                  <p className="text-sm text-muted-foreground text-center mb-4 leading-relaxed line-clamp-3">
+                  <p className="text-sm text-muted-foreground text-center mb-3 leading-relaxed line-clamp-3">
                     {doctor.description}
                   </p>
+
+                  <div className="text-center mb-4">
+                    <span className="text-xs text-primary font-medium hover:underline cursor-pointer">
+                      Know more →
+                    </span>
+                  </div>
 
                   <div className="mb-6">
                     <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">Specialties</h4>
