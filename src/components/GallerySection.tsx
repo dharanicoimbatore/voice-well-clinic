@@ -59,38 +59,181 @@ const GallerySection = () => {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-          {galleryItems.map((item, index) => (
-            <Card key={index} className="group overflow-hidden hover:shadow-medical transition-all duration-300">
-              <div className="relative">
-                <img 
-                  src={item.image} 
-                  alt={item.title}
-                  className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                />
-                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+        {/* Bento Box Layout */}
+        <div className="grid grid-cols-12 grid-rows-6 gap-4 h-[800px] mb-12">
+          {/* Large Featured Card - Top Left */}
+          <Card className="col-span-12 md:col-span-6 row-span-3 group overflow-hidden hover:shadow-medical transition-all duration-300">
+            <div className="relative h-full">
+              <img 
+                src={galleryItems[0].image} 
+                alt={galleryItems[0].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <Badge variant="secondary" className="mb-3">
+                    {galleryItems[0].type === 'facility' ? 'Facility' : 'Team'}
+                  </Badge>
+                  <h3 className="text-xl font-bold mb-2">{galleryItems[0].title}</h3>
+                  <p className="text-sm opacity-90">{galleryItems[0].description}</p>
                   <Button 
                     variant="secondary" 
                     size="sm" 
-                    className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                   >
                     <ZoomIn className="mr-2 h-4 w-4" />
                     View Details
                   </Button>
                 </div>
-                <Badge 
-                  variant={item.type === 'facility' ? 'default' : 'secondary'} 
-                  className="absolute top-3 left-3 text-xs"
+              </div>
+            </div>
+          </Card>
+
+          {/* Tall Card - Top Right */}
+          <Card className="col-span-12 md:col-span-6 row-span-4 group overflow-hidden hover:shadow-medical transition-all duration-300">
+            <div className="relative h-full">
+              <img 
+                src={galleryItems[1].image} 
+                alt={galleryItems[1].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                <Button 
+                  variant="secondary" 
+                  size="sm" 
+                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                 >
-                  {item.type === 'facility' ? 'Facility' : 'Team'}
-                </Badge>
+                  <ZoomIn className="mr-2 h-4 w-4" />
+                  View Details
+                </Button>
               </div>
-              <div className="p-4">
-                <h3 className="font-semibold text-foreground mb-2">{item.title}</h3>
-                <p className="text-sm text-muted-foreground">{item.description}</p>
+              <Badge 
+                variant={galleryItems[1].type === 'facility' ? 'default' : 'secondary'} 
+                className="absolute top-3 left-3 text-xs"
+              >
+                {galleryItems[1].type === 'facility' ? 'Facility' : 'Team'}
+              </Badge>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
+                <h3 className="font-semibold mb-1">{galleryItems[1].title}</h3>
+                <p className="text-xs opacity-90">{galleryItems[1].description}</p>
               </div>
-            </Card>
-          ))}
+            </div>
+          </Card>
+
+          {/* Wide Card - Middle Left */}
+          <Card className="col-span-12 md:col-span-8 row-span-2 group overflow-hidden hover:shadow-medical transition-all duration-300">
+            <div className="relative h-full">
+              <img 
+                src={galleryItems[2].image} 
+                alt={galleryItems[2].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                <Button 
+                  variant="secondary" 
+                  size="sm" 
+                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <ZoomIn className="mr-2 h-4 w-4" />
+                  View Details
+                </Button>
+              </div>
+              <Badge 
+                variant={galleryItems[2].type === 'facility' ? 'default' : 'secondary'} 
+                className="absolute top-3 left-3 text-xs"
+              >
+                {galleryItems[2].type === 'facility' ? 'Facility' : 'Team'}
+              </Badge>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
+                <h3 className="font-semibold mb-1">{galleryItems[2].title}</h3>
+                <p className="text-xs opacity-90">{galleryItems[2].description}</p>
+              </div>
+            </div>
+          </Card>
+
+          {/* Small Square Card - Middle Right */}
+          <Card className="col-span-12 md:col-span-4 row-span-2 group overflow-hidden hover:shadow-medical transition-all duration-300">
+            <div className="relative h-full">
+              <img 
+                src={galleryItems[3].image} 
+                alt={galleryItems[3].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                <Button 
+                  variant="secondary" 
+                  size="sm" 
+                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                >
+                  <ZoomIn className="mr-2 h-4 w-4" />
+                  View Details
+                </Button>
+              </div>
+              <Badge 
+                variant={galleryItems[3].type === 'facility' ? 'default' : 'secondary'} 
+                className="absolute top-3 left-3 text-xs"
+              >
+                {galleryItems[3].type === 'facility' ? 'Facility' : 'Team'}
+              </Badge>
+              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
+                <h3 className="font-semibold mb-1 text-sm">{galleryItems[3].title}</h3>
+                <p className="text-xs opacity-90">{galleryItems[3].description}</p>
+              </div>
+            </div>
+          </Card>
+
+          {/* Bottom Row - Two Cards */}
+          <Card className="col-span-12 md:col-span-6 row-span-1 group overflow-hidden hover:shadow-medical transition-all duration-300">
+            <div className="relative h-full">
+              <img 
+                src={galleryItems[4].image} 
+                alt={galleryItems[4].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                  <Badge variant="secondary" className="mb-2 text-xs">
+                    {galleryItems[4].type === 'facility' ? 'Facility' : 'Team'}
+                  </Badge>
+                  <h3 className="font-semibold text-sm">{galleryItems[4].title}</h3>
+                  <Button 
+                    variant="secondary" 
+                    size="sm" 
+                    className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  >
+                    <ZoomIn className="mr-2 h-3 w-3" />
+                    View
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Card>
+
+          <Card className="col-span-12 md:col-span-6 row-span-1 group overflow-hidden hover:shadow-medical transition-all duration-300">
+            <div className="relative h-full">
+              <img 
+                src={galleryItems[5].image} 
+                alt={galleryItems[5].title}
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent">
+                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
+                  <Badge variant="secondary" className="mb-2 text-xs">
+                    {galleryItems[5].type === 'facility' ? 'Facility' : 'Team'}
+                  </Badge>
+                  <h3 className="font-semibold text-sm">{galleryItems[5].title}</h3>
+                  <Button 
+                    variant="secondary" 
+                    size="sm" 
+                    className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                  >
+                    <ZoomIn className="mr-2 h-3 w-3" />
+                    View
+                  </Button>
+                </div>
+              </div>
+            </div>
+          </Card>
         </div>
 
         <div className="text-center">
