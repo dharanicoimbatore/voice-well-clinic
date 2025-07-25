@@ -1,11 +1,34 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Play, ZoomIn } from "lucide-react";
+import { Play, ZoomIn, Grid3X3, LayoutGrid } from "lucide-react";
 import medicalFacilityImage from "@/assets/medical-facility.jpg";
 import medicalTeamImage from "@/assets/medical-team.jpg";
+import consultationRoomImage from "@/assets/consultation-room.jpg";
+import medicalLabImage from "@/assets/medical-lab.jpg";
+import waitingAreaImage from "@/assets/waiting-area.jpg";
+import surgeryRoomImage from "@/assets/surgery-room.jpg";
+import medicalDiscussionImage from "@/assets/medical-discussion.jpg";
+import pharmacyImage from "@/assets/pharmacy.jpg";
+import imagingRoomImage from "@/assets/imaging-room.jpg";
+import therapyRoomImage from "@/assets/therapy-room.jpg";
+import pediatricWardImage from "@/assets/pediatric-ward.jpg";
+import emergencyRoomImage from "@/assets/emergency-room.jpg";
+import conferenceRoomImage from "@/assets/conference-room.jpg";
+import nurseStationImage from "@/assets/nurse-station.jpg";
+import storageRoomImage from "@/assets/storage-room.jpg";
+import cafeteriaImage from "@/assets/cafeteria.jpg";
+import changingRoomImage from "@/assets/changing-room.jpg";
+import dentalClinicImage from "@/assets/dental-clinic.jpg";
+import bloodDonationImage from "@/assets/blood-donation.jpg";
+import researchLabImage from "@/assets/research-lab.jpg";
+import chapelImage from "@/assets/chapel.jpg";
+import recordsOfficeImage from "@/assets/records-office.jpg";
+import { useState } from "react";
 
 const GallerySection = () => {
+  const [layoutType, setLayoutType] = useState<'mixed' | 'grid'>('mixed');
+  
   const galleryItems = [
     {
       type: "facility",
@@ -15,9 +38,129 @@ const GallerySection = () => {
     },
     {
       type: "team",
-      title: "Our Medical Team",
+      title: "Our Medical Team", 
       description: "Experienced professionals dedicated to your care",
       image: medicalTeamImage
+    },
+    {
+      type: "facility",
+      title: "Private Consultation Rooms",
+      description: "Comfortable and private spaces for patient consultations",
+      image: consultationRoomImage
+    },
+    {
+      type: "facility",
+      title: "Advanced Medical Laboratory",
+      description: "State-of-the-art testing and diagnostic capabilities",
+      image: medicalLabImage
+    },
+    {
+      type: "facility",
+      title: "Comfortable Waiting Areas",
+      description: "Relaxing spaces designed for patient comfort",
+      image: waitingAreaImage
+    },
+    {
+      type: "facility",
+      title: "Modern Surgery Suite",
+      description: "Advanced surgical facilities with latest equipment",
+      image: surgeryRoomImage
+    },
+    {
+      type: "team",
+      title: "Medical Team Discussion",
+      description: "Collaborative care planning and case reviews",
+      image: medicalDiscussionImage
+    },
+    {
+      type: "facility",
+      title: "On-site Pharmacy",
+      description: "Convenient prescription services for patients",
+      image: pharmacyImage
+    },
+    {
+      type: "facility",
+      title: "Medical Imaging Center",
+      description: "Advanced diagnostic imaging capabilities",
+      image: imagingRoomImage
+    },
+    {
+      type: "facility",
+      title: "Physical Therapy Room",
+      description: "Rehabilitation and recovery support services",
+      image: therapyRoomImage
+    },
+    {
+      type: "facility",
+      title: "Pediatric Care Unit",
+      description: "Specialized care for our youngest patients",
+      image: pediatricWardImage
+    },
+    {
+      type: "facility",
+      title: "Emergency Treatment Room",
+      description: "Immediate care for urgent medical needs",
+      image: emergencyRoomImage
+    },
+    {
+      type: "facility",
+      title: "Medical Conference Room",
+      description: "Professional meeting and education spaces",
+      image: conferenceRoomImage
+    },
+    {
+      type: "facility",
+      title: "Nurse Station Hub",
+      description: "Central coordination for patient care",
+      image: nurseStationImage
+    },
+    {
+      type: "facility",
+      title: "Medical Supply Storage",
+      description: "Organized and sterile equipment storage",
+      image: storageRoomImage
+    },
+    {
+      type: "facility",
+      title: "Patient Cafeteria",
+      description: "Healthy dining options for patients and families",
+      image: cafeteriaImage
+    },
+    {
+      type: "facility",
+      title: "Staff Changing Area",
+      description: "Professional facilities for medical staff",
+      image: changingRoomImage
+    },
+    {
+      type: "facility",
+      title: "Dental Treatment Room",
+      description: "Comprehensive oral health services",
+      image: dentalClinicImage
+    },
+    {
+      type: "facility",
+      title: "Blood Donation Center",
+      description: "Community blood donation services",
+      image: bloodDonationImage
+    },
+    {
+      type: "team",
+      title: "Research Laboratory",
+      description: "Medical research and development team",
+      image: researchLabImage
+    },
+    {
+      type: "facility",
+      title: "Meditation Chapel",
+      description: "Peaceful space for reflection and prayer",
+      image: chapelImage
+    },
+    {
+      type: "facility",
+      title: "Medical Records Office",
+      description: "Secure patient information management",
+      image: recordsOfficeImage
     },
     {
       type: "facility",
@@ -28,7 +171,7 @@ const GallerySection = () => {
     {
       type: "facility",
       title: "Voice Analysis Laboratory",
-      description: "Comprehensive voice testing and analysis capabilities",
+      description: "Comprehensive voice testing and analysis capabilities", 
       image: medicalFacilityImage
     },
     {
@@ -45,6 +188,38 @@ const GallerySection = () => {
     }
   ];
 
+  const renderGalleryCard = (item: typeof galleryItems[0], index: number, className: string) => (
+    <Card key={index} className={`${className} group overflow-hidden hover:shadow-medical transition-all duration-300`}>
+      <div className="relative h-full">
+        <img 
+          src={item.image} 
+          alt={item.title}
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+        />
+        <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+          <Button 
+            variant="secondary" 
+            size="sm" 
+            className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+          >
+            <ZoomIn className="mr-2 h-4 w-4" />
+            View Details
+          </Button>
+        </div>
+        <Badge 
+          variant={item.type === 'facility' ? 'default' : 'secondary'} 
+          className="absolute top-3 left-3 text-xs"
+        >
+          {item.type === 'facility' ? 'Facility' : 'Team'}
+        </Badge>
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
+          <h3 className="font-semibold mb-1 text-sm">{item.title}</h3>
+          <p className="text-xs opacity-90 line-clamp-2">{item.description}</p>
+        </div>
+      </div>
+    </Card>
+  );
+
   return (
     <section id="gallery" className="py-20 bg-medical-gray/30">
       <div className="container mx-auto px-4">
@@ -53,188 +228,115 @@ const GallerySection = () => {
           <h2 className="text-3xl lg:text-4xl font-bold text-foreground mb-6">
             Take a Look Inside Our Clinic
           </h2>
-          <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-            Explore our modern medical facility designed specifically for laryngeal care, 
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+            Explore our comprehensive medical facility with 26 specialized areas designed for complete healthcare, 
             featuring the latest diagnostic equipment and comfortable patient spaces.
           </p>
+          
+          {/* Layout Toggle */}
+          <div className="flex justify-center mb-12">
+            <div className="bg-background rounded-lg p-1 flex space-x-1">
+              <Button
+                variant={layoutType === 'mixed' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => setLayoutType('mixed')}
+                className="flex items-center"
+              >
+                <LayoutGrid className="mr-2 h-4 w-4" />
+                Mixed Layout
+              </Button>
+              <Button
+                variant={layoutType === 'grid' ? 'default' : 'ghost'}
+                size="sm"
+                onClick={() => setLayoutType('grid')}
+                className="flex items-center"
+              >
+                <Grid3X3 className="mr-2 h-4 w-4" />
+                Grid Layout
+              </Button>
+            </div>
+          </div>
         </div>
 
-        {/* Bento Box Layout */}
-        <div className="grid grid-cols-12 grid-rows-6 gap-4 h-[800px] mb-12">
-          {/* Large Featured Card - Top Left */}
-          <Card className="col-span-12 md:col-span-6 row-span-3 group overflow-hidden hover:shadow-medical transition-all duration-300">
-            <div className="relative h-full">
-              <img 
-                src={galleryItems[0].image} 
-                alt={galleryItems[0].title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent">
-                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                  <Badge variant="secondary" className="mb-3">
-                    {galleryItems[0].type === 'facility' ? 'Facility' : 'Team'}
-                  </Badge>
-                  <h3 className="text-xl font-bold mb-2">{galleryItems[0].title}</h3>
-                  <p className="text-sm opacity-90">{galleryItems[0].description}</p>
-                  <Button 
-                    variant="secondary" 
-                    size="sm" 
-                    className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  >
-                    <ZoomIn className="mr-2 h-4 w-4" />
-                    View Details
-                  </Button>
+        {layoutType === 'mixed' ? (
+          // Mixed Masonry Layout
+          <div className="columns-1 md:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6 mb-12">
+            {galleryItems.map((item, index) => {
+              // Create varied heights for masonry effect
+              const heights = ['h-64', 'h-80', 'h-72', 'h-96', 'h-60', 'h-88'];
+              const randomHeight = heights[index % heights.length];
+              
+              return (
+                <div key={index} className="break-inside-avoid mb-6">
+                  <Card className="group overflow-hidden hover:shadow-medical transition-all duration-300">
+                    <div className={`relative ${randomHeight}`}>
+                      <img 
+                        src={item.image} 
+                        alt={item.title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                      <div className="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors duration-300 flex items-center justify-center">
+                        <Button 
+                          variant="secondary" 
+                          size="sm" 
+                          className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                        >
+                          <ZoomIn className="mr-2 h-4 w-4" />
+                          View Details
+                        </Button>
+                      </div>
+                      <Badge 
+                        variant={item.type === 'facility' ? 'default' : 'secondary'} 
+                        className="absolute top-3 left-3 text-xs"
+                      >
+                        {item.type === 'facility' ? 'Facility' : 'Team'}
+                      </Badge>
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 to-transparent p-4 text-white">
+                        <h3 className="font-semibold mb-1 text-sm">{item.title}</h3>
+                        <p className="text-xs opacity-90 line-clamp-2">{item.description}</p>
+                      </div>
+                    </div>
+                  </Card>
                 </div>
-              </div>
-            </div>
-          </Card>
-
-          {/* Tall Card - Top Right */}
-          <Card className="col-span-12 md:col-span-6 row-span-4 group overflow-hidden hover:shadow-medical transition-all duration-300">
-            <div className="relative h-full">
-              <img 
-                src={galleryItems[1].image} 
-                alt={galleryItems[1].title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                <Button 
-                  variant="secondary" 
-                  size="sm" 
-                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                  <ZoomIn className="mr-2 h-4 w-4" />
-                  View Details
-                </Button>
-              </div>
-              <Badge 
-                variant={galleryItems[1].type === 'facility' ? 'default' : 'secondary'} 
-                className="absolute top-3 left-3 text-xs"
-              >
-                {galleryItems[1].type === 'facility' ? 'Facility' : 'Team'}
-              </Badge>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
-                <h3 className="font-semibold mb-1">{galleryItems[1].title}</h3>
-                <p className="text-xs opacity-90">{galleryItems[1].description}</p>
-              </div>
-            </div>
-          </Card>
-
-          {/* Wide Card - Middle Left */}
-          <Card className="col-span-12 md:col-span-8 row-span-2 group overflow-hidden hover:shadow-medical transition-all duration-300">
-            <div className="relative h-full">
-              <img 
-                src={galleryItems[2].image} 
-                alt={galleryItems[2].title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                <Button 
-                  variant="secondary" 
-                  size="sm" 
-                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                  <ZoomIn className="mr-2 h-4 w-4" />
-                  View Details
-                </Button>
-              </div>
-              <Badge 
-                variant={galleryItems[2].type === 'facility' ? 'default' : 'secondary'} 
-                className="absolute top-3 left-3 text-xs"
-              >
-                {galleryItems[2].type === 'facility' ? 'Facility' : 'Team'}
-              </Badge>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
-                <h3 className="font-semibold mb-1">{galleryItems[2].title}</h3>
-                <p className="text-xs opacity-90">{galleryItems[2].description}</p>
-              </div>
-            </div>
-          </Card>
-
-          {/* Small Square Card - Middle Right */}
-          <Card className="col-span-12 md:col-span-4 row-span-2 group overflow-hidden hover:shadow-medical transition-all duration-300">
-            <div className="relative h-full">
-              <img 
-                src={galleryItems[3].image} 
-                alt={galleryItems[3].title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
-                <Button 
-                  variant="secondary" 
-                  size="sm" 
-                  className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                >
-                  <ZoomIn className="mr-2 h-4 w-4" />
-                  View Details
-                </Button>
-              </div>
-              <Badge 
-                variant={galleryItems[3].type === 'facility' ? 'default' : 'secondary'} 
-                className="absolute top-3 left-3 text-xs"
-              >
-                {galleryItems[3].type === 'facility' ? 'Facility' : 'Team'}
-              </Badge>
-              <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4 text-white">
-                <h3 className="font-semibold mb-1 text-sm">{galleryItems[3].title}</h3>
-                <p className="text-xs opacity-90">{galleryItems[3].description}</p>
-              </div>
-            </div>
-          </Card>
-
-          {/* Bottom Row - Two Cards */}
-          <Card className="col-span-12 md:col-span-6 row-span-1 group overflow-hidden hover:shadow-medical transition-all duration-300">
-            <div className="relative h-full">
-              <img 
-                src={galleryItems[4].image} 
-                alt={galleryItems[4].title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent">
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <Badge variant="secondary" className="mb-2 text-xs">
-                    {galleryItems[4].type === 'facility' ? 'Facility' : 'Team'}
-                  </Badge>
-                  <h3 className="font-semibold text-sm">{galleryItems[4].title}</h3>
-                  <Button 
-                    variant="secondary" 
-                    size="sm" 
-                    className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+              );
+            })}
+          </div>
+        ) : (
+          // Traditional Grid Layout
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 mb-12">
+            {galleryItems.map((item, index) => (
+              <Card key={index} className="group overflow-hidden hover:shadow-medical transition-all duration-300">
+                <div className="relative h-64">
+                  <img 
+                    src={item.image} 
+                    alt={item.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                    <Button 
+                      variant="secondary" 
+                      size="sm" 
+                      className="opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                    >
+                      <ZoomIn className="mr-2 h-4 w-4" />
+                      View Details
+                    </Button>
+                  </div>
+                  <Badge 
+                    variant={item.type === 'facility' ? 'default' : 'secondary'} 
+                    className="absolute top-3 left-3 text-xs"
                   >
-                    <ZoomIn className="mr-2 h-3 w-3" />
-                    View
-                  </Button>
-                </div>
-              </div>
-            </div>
-          </Card>
-
-          <Card className="col-span-12 md:col-span-6 row-span-1 group overflow-hidden hover:shadow-medical transition-all duration-300">
-            <div className="relative h-full">
-              <img 
-                src={galleryItems[5].image} 
-                alt={galleryItems[5].title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
-              />
-              <div className="absolute inset-0 bg-gradient-to-r from-black/60 to-transparent">
-                <div className="absolute bottom-0 left-0 right-0 p-4 text-white">
-                  <Badge variant="secondary" className="mb-2 text-xs">
-                    {galleryItems[5].type === 'facility' ? 'Facility' : 'Team'}
+                    {item.type === 'facility' ? 'Facility' : 'Team'}
                   </Badge>
-                  <h3 className="font-semibold text-sm">{galleryItems[5].title}</h3>
-                  <Button 
-                    variant="secondary" 
-                    size="sm" 
-                    className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  >
-                    <ZoomIn className="mr-2 h-3 w-3" />
-                    View
-                  </Button>
                 </div>
-              </div>
-            </div>
-          </Card>
-        </div>
+                <div className="p-4">
+                  <h3 className="font-semibold text-foreground mb-2 text-sm">{item.title}</h3>
+                  <p className="text-xs text-muted-foreground line-clamp-2">{item.description}</p>
+                </div>
+              </Card>
+            ))}
+          </div>
+        )}
 
         <div className="text-center">
           <div className="bg-gradient-to-r from-primary/10 to-medical-teal/10 rounded-lg p-8 mb-8">
